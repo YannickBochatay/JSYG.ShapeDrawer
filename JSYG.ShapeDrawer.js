@@ -86,7 +86,7 @@
             }
         });
         
-        if (this.resizeOptions) resizer.set(this.resizeOptions);
+        if (this.options) resizer.set(this.options);
         
         resizer.on("end",function(e) {
 
