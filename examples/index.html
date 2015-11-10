@@ -29,6 +29,7 @@
         <label>
             <input type="radio" name="shape" value="ellipse"/> Ellipse
         </label>
+        
         <script>
             
             var drawer = new JSYG.ShapeDrawer();
@@ -37,9 +38,11 @@
                 alert("What a beautiful "+ shape.tagName +" !");
             });
             
+            drawer.options = {};
+            
             $("svg").on("mousedown",function(e) {
                 
-                var tag = new JSYG('[name=shape]:checked').val();
+               var tag = new JSYG('[name=shape]:checked').val();
                               
                var shape = new JSYG("<"+tag+">");
                

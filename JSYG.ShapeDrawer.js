@@ -58,8 +58,8 @@
         
         shape = new JSYG(shape);
         
-        var doc = shape.offsetParent(),
-            pos = doc.getCursorPos(e),
+        var doc = shape.offsetParent("farthest"),
+            pos = shape.getCursorPos(e),
             tag = shape.getTag(),
             resizer = new JSYG.Resizable(shape),
             that = this;
