@@ -2596,7 +2596,7 @@
                         if (tag == 'text') dec = (parseFloat($this.attr("x")) || 0) - dim.x;
                         else {
                             dec = -dim.x;
-                            if (JSYG.support.svgUseBBox) dec += parseFloat($this.attr('x'));
+                            if (JSYG.support.svgUseBBox) dec += parseFloat($this.attr('x') || 0);
                         }
                         
                         $this.attr('x',opt.x + dec);
@@ -2607,16 +2607,16 @@
                         if (tag == 'text') dec = (parseFloat($this.attr("y")) || 0) - dim.y;
                         else {
                             dec = -dim.y;
-                            if (JSYG.support.svgUseBBox) dec += parseFloat($this.attr('y'));
+                            if (JSYG.support.svgUseBBox) dec += parseFloat($this.attr('y') || 0);
                         }
                         
                         $this.attr('y',opt.y + dec);
                     }
                     
-                    if ('width' in opt || 'height' in opt) {
+                    if ('width' in opt && dim.width!=0 || 'height' in opt && dim.height!=0) {
                         
                         mtx = new Matrix();
-                        
+                                                
                         if ('width' in opt && dim.width!=0) {
                             mtx = mtx.scaleNonUniform(opt.width/dim.width,1,dim.x,dim.y);
                         }
