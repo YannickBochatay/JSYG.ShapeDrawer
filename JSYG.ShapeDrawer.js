@@ -130,9 +130,7 @@
             cursor : false,
             
             inverse : true,
-            
-            inverse : true,
-            
+                        
             ondrag : function(e) {
                 that.trigger("draw",shape[0],e,shape[0]);
             }
