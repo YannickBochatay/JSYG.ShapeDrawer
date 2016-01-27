@@ -75,8 +75,8 @@
         function mouseupFct(e) {
             
             new JSYG(document).off({
-                'mousemove':mousemoveFct,
-                'mouseup':mouseupFct
+                'vmousemove':mousemoveFct,
+                'vmouseup':mouseupFct
             });
             
             var dim = line.getDim();
@@ -89,8 +89,8 @@
         }
         
         new JSYG(document).on({
-            'mousemove':mousemoveFct,
-            'mouseup':mouseupFct
+            'vmousemove':mousemoveFct,
+            'vmouseup':mouseupFct
         });
         
         this.inProgress = true;

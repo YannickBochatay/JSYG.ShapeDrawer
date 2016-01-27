@@ -89,10 +89,7 @@
     Resizable.prototype = new JSYG.StdConstruct();
     
     Resizable.prototype.constructor = Resizable;
-    /**
-     * Evènement qui déclenche le redimensionnement
-     */	
-    Resizable.prototype.event = 'mousedown';
+    
     /**
      * Restriction à un bouton de la souris (1 bouton gauche, 2 bouton du milieu, 3 bouton droit)
      */
@@ -187,7 +184,7 @@
      */
     Resizable.prototype.inverse = false;
     /**
-     * fonction(s) à exécuter à la préparation d'un redimensionnement (événement mousedown)
+     * fonction(s) à exécuter à la préparation d'un redimensionnement (événement vmousedown)
      */			
     Resizable.prototype.onstart = null;
     /**
@@ -228,7 +225,7 @@
     }
     
     /**
-     * Déclenche le redimensionnement (évènement mousedown)
+     * Déclenche le redimensionnement (évènement vmousedown)
      * @param e objet Event
      * @returns {Resizable}
      */
@@ -570,8 +567,8 @@
             }
             
             new JSYG(document).off({
-                'mousemove':mousemoveFct,
-                'mouseup':remove
+                'vmousemove':mousemoveFct,
+                'vmouseup':remove
             });
             
             if (hasChanged) {
@@ -596,8 +593,8 @@
         if (that.className) { jNode.classAdd(that.className); }
         
         new JSYG(document).on({
-            'mousemove':mousemoveFct,
-            'mouseup':remove
+            'vmousemove':mousemoveFct,
+            'vmouseup':remove
         });
         
         this.trigger('start',that.node,e);
@@ -620,7 +617,7 @@
         evt = opt && opt.evt;
         
         function start(e) {
-            if (that.eventWhich && e.which != that.eventWhich) return;
+            if (that.eventWhich && e.which!=null && e.which != that.eventWhich) return;
             that.start(e);
         }
         
@@ -632,13 +629,13 @@
             var field = new JSYG(this);
             field.data('resizableUnselect',this.unselectable);
             this.unselectable = 'on'; //IE
-            field.on(that.event,start);
+            field.on("vmousedown",start);
         });
         
         this.disable = function() {
             new JSYG(this.field).each(function() {
                 var field = new JSYG(this);
-                field.off(that.event,start);
+                field.off("vmousedown",start);
                 this.unselectable = field.data('resizableUnselect');
             });
             this.enabled = false;
