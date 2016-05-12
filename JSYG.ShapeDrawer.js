@@ -3,8 +3,16 @@
 
 (function(factory) {
     
-    if (typeof define != "undefined" && define.amd) define("jsyg-shapedrawer",["jsyg","jsyg-resizable"],factory);
+    if (typeof module == "object" && typeof module.exports == "object") {
+      
+      module.exports = factory( require("jsyg"), require("jsyg-resizable") );
+    }
+    else if (typeof define != "undefined" && define.amd) {
+      
+      define("jsyg-shapedrawer",["jsyg","jsyg-resizable"],factory);
+    }
     else if (typeof JSYG != "undefined") {
+      
         if (JSYG.Resizable) factory(JSYG,JSYG.Resizable);
         else throw new Error("You need JSYG.Resizable");
     }

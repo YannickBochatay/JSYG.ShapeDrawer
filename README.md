@@ -1,35 +1,35 @@
 # JSYG.ShapeDrawer
-Draw svg shapes with JSYG framework
+Draw svg shapes with [JSYG framework](https://github.com/YannickBochatay/JSYG)
 
-##### Demo
+
+### Demo
 [http://yannickbochatay.github.io/JSYG.ShapeDrawer](http://yannickbochatay.github.io/JSYG.ShapeDrawer/)
 
-##### Installation
+
+### Installation
 ```shell
-bower install jsyg-shapedrawer
+npm install jsyg-shapedrawer
 ```
+You can also install it with bower
 
 
-##### Example
+### Example with webpack/babel
 
-HTML
-```html
-<svg width="500" height="500" id="editor"></svg>
-```
-
-Javascript
 ```javascript
-var drawer = new JSYG.ShapeDrawer();
+import ShapeDrawer from "jsyg-shapedrawer"
+
+let drawer = new JSYG.ShapeDrawer();
         
 drawer.on("end",function(e,shape) {
-    alert("What a beautiful rectangle");
+    alert("What a beautiful "+shape.tagName);
 });
 
-$("svg").on("mousedown",function(e) {
+document.querySelector("svg").on("mousedown",function(e) {
 
-    var shape = new JSYG("<rect>");
+    let shape = document.createElementNS("http://www.w3.org/2000/svg","rect");
+   //with JSYG framework : shape = JSYG("<rect>")
 
-    shape.appendTo(this);
+    this.appendChild(shape);
 
     drawer.draw(shape,e);
 });
