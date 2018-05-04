@@ -44,9 +44,6 @@
         <label>
             <input type="radio" name="shape" value="line"/> Line
         </label>
-        <!--<label>
-            <input type="radio" name="shape" value="line"/> Line
-        </label>-->
         <script>
         
         var drawer = new JSYG.ShapeDrawer();
@@ -57,7 +54,7 @@
         
         drawer.options = {};
         
-        $("svg").on("vmousedown",function(e) {
+        $("svg").on("mousedown",function(e) {
             
             var tag = new JSYG('[name=shape]:checked').val();
             

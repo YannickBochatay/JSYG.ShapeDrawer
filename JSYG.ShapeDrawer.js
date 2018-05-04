@@ -74,7 +74,7 @@
         function mousemoveFct(e) {
             
             var pos = line.getCursorPos(e);
-            
+
             line.attr({"x2":pos.x,"y2":pos.y});
             
             that.trigger("draw",line[0],e,line[0]);
@@ -83,8 +83,8 @@
         function mouseupFct(e) {
             
             new JSYG(document).off({
-                'vmousemove':mousemoveFct,
-                'vmouseup':mouseupFct
+                'mousemove':mousemoveFct,
+                'mouseup':mouseupFct
             });
             
             var dim = line.getDim();
@@ -97,8 +97,8 @@
         }
         
         new JSYG(document).on({
-            'vmousemove':mousemoveFct,
-            'vmouseup':mouseupFct
+            'mousemove':mousemoveFct,
+            'mouseup':mouseupFct
         });
         
         this.inProgress = true;

@@ -10,7 +10,6 @@ Draw svg shapes with [JSYG framework](https://github.com/YannickBochatay/JSYG)
 ```shell
 npm install jsyg-shapedrawer
 ```
-You can also install it with bower
 
 
 ### Example with webpack/babel
